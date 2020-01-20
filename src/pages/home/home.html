@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Ionic Menu Starter</h3>
+
+  <button ion-button secondary (click)="register()">Register</button>
+
+  <div class="card">
+    <div class="card-body" *ngIf="bookingRequestFlag">
+      <h4>User: {{bookingRequest.user.Name}}</h4>
+      <h4>From: {{bookingRequest.from.address}} </h4>
+      <h4>To: {{bookingRequest.to.address}} </h4>
+      <h5>Request Expires in: {{countdownTime}} secs</h5>
+    </div>
+  </div>
+</ion-content>
