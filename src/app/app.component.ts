@@ -31,27 +31,35 @@ export class MyApp {
     private storageService: StorageServiceProvider,
   ) {
     this.initializeApp();
+    let user = this.storageService.getKey("user");
     this.socket.connect();
-    navigator.geolocation.getCurrentPosition(p => {
+    console.log(user)
+    // navigator.geolocation.getCurrentPosition(p => {
       setInterval(() => {
-        let user = this.storageService.getKey("user");
-
         if (user) {
           let obj = {
-            lat: p.coords.latitude,
-            lng: p.coords.longitude,
+            // lat: p.coords.latitude,
+            // lng: p.coords.longitude,
+            lat:  12.922486099999999 ,
+            lng:  77.63604099999999,
             user: JSON.parse(user)
           };
+          
+          this.socket.emit("coordinates", obj);
           console.log(1)
-          // this.socket.emit("coordinates", obj);
         }
-      }, 5000);
-    });
+      }, 1000);
+    // });
     this.socket.on("booking-request", request => {
-      // alert('booking request')
       this.events.publish('bookingRequest',request)
-      // console.log(request);
     });
+
+    // accept booking
+    events.subscribe('booking-accepted', request=>{
+      request.user = user;
+      socket.emit('booking-accepted', request)
+    })
+
     // used for an example of ngFor and navigation
     this.pages = [
       { title: "Home", component: HomePage },

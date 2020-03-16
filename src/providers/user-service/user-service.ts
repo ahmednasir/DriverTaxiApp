@@ -14,7 +14,7 @@ export class UserServiceProvider {
 
   signIn(body): Observable<any>{
     // let URL = this.config.BASE_URL+ this.config.REGISTER_URL;
-    let URL = "http://localhost:3000/register"
+    let URL = "http://3.6.77.14:3000/register"
     let header = new HttpHeaders({
       "Content-Type": "application/json"
     });

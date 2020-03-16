@@ -18,6 +18,10 @@
       <h4>From: {{bookingRequest.from.address}} </h4>
       <h4>To: {{bookingRequest.to.address}} </h4>
       <h5>Request Expires in: {{countdownTime}} secs</h5>
+      <div class="row">
+        <button ion-button (click)='bookingAccepted()'>Accept</button>
+        <button ion-button>Reject</button>
+      </div>      
     </div>
   </div>
 </ion-content>

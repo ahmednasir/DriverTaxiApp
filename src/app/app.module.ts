@@ -25,7 +25,7 @@ import { SocketServiceProvider } from '../providers/socket-service/socket-servic
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 
-const config: SocketIoConfig = {url:"http://localhost:3000"}
+const config: SocketIoConfig = {url:"http://3.6.77.14:3000", options:{query: "userId=value1"}}
 
 @NgModule({
   declarations: [

@@ -14,7 +14,7 @@ import { StorageServiceProvider } from "../../providers/storage-service/storage-
 export class HomePage {
   bookingRequestFlag:boolean = false;
   bookingRequest:any;
-  countdownTime: number = 10
+  countdownTime: number = 30
   constructor(
     public socket: Socket,
     private events: Events,
@@ -31,13 +31,12 @@ export class HomePage {
       setInterval(()=>{
         this.countdownTime--;
       },1000)
-      setTimeout(()=>{
-        this.countdownTime=10;
+      setTimeout(()=>{        
         this.bookingRequestFlag= false    
-      },10000)
+      },30000)
       
     })
-    
+    this.countdownTime=30;
     
   }
   register() {
@@ -67,5 +66,10 @@ export class HomePage {
         console.log(err);
       }
     );
+  }
+  bookingAccepted(){
+    this.bookingRequestFlag = false;
+    alert('Booking accepted')
+    this.events.publish('booking-accepted',this.bookingRequest)
   }
 }
